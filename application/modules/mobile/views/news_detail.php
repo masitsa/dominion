@@ -18,7 +18,17 @@ if ($query->num_rows() > 0)
 	$result = '<h2 class="page_title">'.strip_tags($title).'</h2>
 	 
 	          <div class="post_single">
-	                 
+					<div class="featured_image">
+						<img title="" alt="" src="images/post_photo.jpg" class="">
+						<div class="post_title_single"><h2>Design is not just what it looks like and feels like.</h2></div>
+						<div class="post_author">
+							<a class="open-panel" data-panel="left" href="#"><img title="" alt="" src="images/author.jpg"></a>
+						</div> 
+						<div class="post_social">
+							<a class="open-popup" data-popup=".popup-social" href="#"><img title="" alt="" src="images/icons/white/heart.png"></a>              
+						</div> 
+					</div>
+				
 	            <div class="page_content"> 
 
 	              <div class="entry">

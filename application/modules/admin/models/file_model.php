@@ -155,6 +155,47 @@ class File_model extends CI_Model
 	}
 	
 	/*
+	*	Upload file
+	*	@param string $upload_path
+	* 	@param string $field_name
+	*
+	*/
+	public function upload_media($upload_path, $field_name)
+	{
+		$config = array(
+				'allowed_types'	=> 'mp4|mp3|flv|wav',
+				'upload_path' 	=> $upload_path,
+				'quality' 		=> "100%",
+				'max_size'      => '0',
+				'file_name' 	=> md5(date('Y-m-d H:i:s'))
+			);
+			
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload($field_name))
+		{
+			// if upload fail, grab error
+			$response['check'] = FALSE;
+			$response['error'] =  $this->upload->display_errors();
+		}
+		
+		else
+		{
+			// otherwise, put the upload datas here.
+			// if you want to use database, put insert query in this loop
+			$image_upload_data = $this->upload->data();
+			
+			$file_name = $image_upload_data['file_name'];
+
+			$response['check'] = TRUE;
+			$response['file_name'] =  $file_name;
+		}
+		
+        unset($_FILES[$field_name]);
+		return $response;
+	}
+	
+	/*
 	*	Resize an image
 	*	@param string $file_path
 	* 	@param string $new_path

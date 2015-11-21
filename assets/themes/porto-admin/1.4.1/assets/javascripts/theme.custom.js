@@ -8,6 +8,12 @@ $( document ).ready(function() {
 		});
 		
 	}, 5000);
+	
+	/* CL Editor */
+	$(".cleditor").cleditor({
+		width: "auto",
+		height: "100%"
+	});
 });
 
 $(document).on("change",".parent_sections select",function()
